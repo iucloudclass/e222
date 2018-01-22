@@ -19,11 +19,16 @@
 
 \section{Introduction}
 
-In this lab session we will focus on how to make a RESTful web service with Python Eve. In this tutorial we will focus on installing the required packages for python and we will build a simple web service to retrieve information. 
+In this lab session we will focus on how to make a RESTful web service
+with Python Eve. In this tutorial we will focus on installing the
+required packages for python and we will build a simple web service to
+retrieve information.
 
 \section{Prerequisites}
 
-Ubuntu 16.04 is the recommended OS for the labs. We recommend you to use a virtual box to install the OS in case you don't have access to the OS being installed in your workstation. 
+Ubuntu 16.04 is the recommended OS for the labs. We recommend you to
+use a virtual box to install the OS in case you don't have access to
+the OS being installed in your workstation.
 
 \section{Installation}
 
@@ -43,7 +48,9 @@ Initially we need to install some packages as follow :
   $ pip install eve
 \end{minted}
 
-Let's install MongoDB. The purpose of installing MongoDB is to store data. MongoDB is a Non-SQL database which helps to store light weight data very quickly.
+Let's install MongoDB. The purpose of installing MongoDB is to store
+data. MongoDB is a Non-SQL database which helps to store light weight
+data very quickly.
 
 
 \noindent  Installing MongoDB :
@@ -75,7 +82,9 @@ $ mongo --host 127.0.0.1:27017
 $ show databases
 \end{minted}
 
-If they execute without errors, you have successfully installed MongoDB. In order to stop the running database instance run the following command. 
+If they execute without errors, you have successfully installed
+MongoDB. In order to stop the running database instance run the
+following command.
 
 \begin{minted}{bash}
 $ sudo service mongod stop
@@ -83,7 +92,8 @@ $ sudo service mongod stop
 
 \section{Building REST API}
 
-In this section we'll focus on building up the infrastructure for the REST API. 
+In this section we'll focus on building up the infrastructure for the
+REST API.
 
 \subsection{Creating Working Directory}
 
@@ -121,18 +131,28 @@ DOMAIN = {
 RESOURCE_METHODS = ['GET', 'POST']
 \end{minted}
 
-This is the format of the Student object that we are trying to call from REST API. In this format we can use GET protocol to retrieve a particular student by any of the attributes in the Schema and also we can use the above schema to save a student object. 
+This is the format of the Student object that we are trying to call
+from REST API. In this format we can use GET protocol to retrieve a
+particular student by any of the attributes in the Schema and also we
+can use the above schema to save a student object.
 \newline
 
-\textbf{Note : In this tutorial, the MongoDB processes and how it works won't be explained in detail. We will focus on how REST can be used to retrieve and save information in a database. MongoDB is not the only database that can be used to save data, but it is an easy installation process and a quicker way to access data using terminal. 
-}
+\textbf{Note : In this tutorial, the MongoDB processes and how it
+  works won't be explained in detail. We will focus on how REST can be
+  used to retrieve and save information in a database. MongoDB is not
+  the only database that can be used to save data, but it is an easy
+  installation process and a quicker way to access data using
+  terminal.  }
 \newline
 
-Initially we need to create the python application to host the REST API and we will use CURL to do the GET and POST requests in this tutorial. 
+Initially we need to create the python application to host the REST
+API and we will use CURL to do the GET and POST requests in this
+tutorial.
 
 \subsection{Creating REST Service}
 
-Create a file called \textbf{run.py} in the same directory where you placed the \textbf{settings.py} and add the following code. 
+Create a file called \textbf{run.py} in the same directory where you
+placed the \textbf{settings.py} and add the following code.
 
 \begin{minted}{python}
 from eve import Eve
@@ -142,7 +162,8 @@ if __name__ == '__main__':
     app.run()
 \end{minted}
 
-This is the minimal application which can host a REST application. Let's start our database server and the REST service.
+This is the minimal application which can host a REST
+application. Let's start our database server and the REST service.
 
 \subsection{Running REST Service}
 
@@ -168,9 +189,13 @@ $ mongod --dbpath=/home/john/e222/labs/lab1/data/db/
 
 \subsection{Saving Data Using Curl}
 
-We can use the commandline to save the data in the database using the REST api. Here we use the endpoint we created as student in the schema as the entry point to the rest service. The data is being saved using JSON format. 
+We can use the commandline to save the data in the database using the
+REST api. Here we use the endpoint we created as student in the schema
+as the entry point to the rest service. The data is being saved using
+JSON format.
 
-Run the following command in the terminal 3, this will save data in the database server. 
+Run the following command in the terminal 3, this will save data in
+the database server.
 
 \begin{minted}{bash}
 $ curl -H "Content-Type: application/json" -X POST -d 
@@ -195,7 +220,13 @@ $ db.student.find().pretty()  # pretty will show the json in a clear way
 
 \newline
 
-Here we specify the header using \textbf{H} tag saying we need the data to be saved using json format. And \textbf{X} tag says the HTTP protocol and here we use POST method. And the tag \textbf{d} specifies the data and make sure you use json format to enter the data. Finally, the REST api endpoint to which we must save data. This allows us to save the data in a table called \textbf{student} in MongoDB within a database called \textbf{eve}. 
+Here we specify the header using \textbf{H} tag saying we need the
+data to be saved using json format. And \textbf{X} tag says the HTTP
+protocol and here we use POST method. And the tag \textbf{d} specifies
+the data and make sure you use json format to enter the data. Finally,
+the REST api endpoint to which we must save data. This allows us to
+save the data in a table called \textbf{student} in MongoDB within a
+database called \textbf{eve}.
 
 \subsection{Retrieving Data Using Curl}
 
@@ -209,22 +240,28 @@ $ curl http://127.0.0.1:5000/student?firstname=John
 
 \newline
 
-Here you can use any of the attributes in the saved object to call the value. If you just used the endpoint itself without specifying the attribute name, it will load all the saved objects. 
+Here you can use any of the attributes in the saved object to call the
+value. If you just used the endpoint itself without specifying the
+attribute name, it will load all the saved objects.
 
 \section{Exercises}
 \subsection{Payloads}
-For this section we will ensure that the proper payloads are received upon a GET and DELETE request. For this to work ensure that you have a MongoDB up and running.
+For this section we will ensure that the proper payloads are received
+upon a GET and DELETE request. For this to work ensure that you have a
+MongoDB up and running.
 \begin{minted}{bash}
 $ sudo service mongod start
 \end{minted}
 
-We will now create the proper script to launch the API and an appropriate configuration file. \\
-The configuration file (settings.py) should have the following line.
+We will now create the proper script to launch the API and an
+appropriate configuration file. \\ The configuration file
+(settings.py) should have the following line.
 \begin{minted}{python}
 DOMAIN = {'people': {}}
 \end{minted}
 
-In the same directory as the the configuration file you need to create a launch script i.e. run.py with the following lines.
+In the same directory as the the configuration file you need to create
+a launch script i.e. run.py with the following lines.
 
 \begin{minted}{python}
 from eve import Eve
@@ -234,20 +271,28 @@ if __name__ == '__main__':
     app.run()
 \end{minted}
 
-Now that you have an instance of MongoDB running and the two newly created .py files located in the same directory we can launch the API. In a new terminal navigate to the directory containing the configuration and launch files and execute the launch script. Again make sure this is in a seperate terminal so you can see what's happening as you make requests. 
+Now that you have an instance of MongoDB running and the two newly
+created .py files located in the same directory we can launch the
+API. In a new terminal navigate to the directory containing the
+configuration and launch files and execute the launch script. Again
+make sure this is in a seperate terminal so you can see what's
+happening as you make requests.
 
 \begin{minted}{bash}
 $ python run.py
 * Running on http://127.0.0.1:5000/
 \end{minted}
 
-Now consume the API with the following command and inspect the payload and identify what request was made.
+Now consume the API with the following command and inspect the payload
+and identify what request was made.
 
 \begin{minted}{bash}
 $ curl -i http://127.0.0.1:5000
 \end{minted}
 
-Your payload should look like the one below, if your output isn't formatted like below try adding ?pretty=1 (curl -i http://127.0.0.1:5000?pretty=1) to the end of the curl command.
+Your payload should look like the one below, if your output isn't
+formatted like below try adding ?pretty=1 (curl -i
+http://127.0.0.1:5000?pretty=1) to the end of the curl command.
 \begin{minted}{bash}
 HTTP/1.0 200 OK
 Content-Type: application/json
@@ -266,17 +311,22 @@ Date: Wed, 17 Jan 2018 18:34:07 GMT
     }
 \end{minted}
 
-Remember that the API entry points adhere to the HATEOAS principle, thus provide information regarding the resources accessible through the API. In this case how many child resources are available through our API? 
+Remember that the API entry points adhere to the HATEOAS principle,
+thus provide information regarding the resources accessible through
+the API. In this case how many child resources are available through
+our API?
 
 \vspace{5mm}
 
-If you said (1) you're correct! It's the one resource we defined in the configuration file 'people'. Now lets try to request people.
+If you said (1) you're correct! It's the one resource we defined in
+the configuration file 'people'. Now lets try to request people.
 
 \begin{minted}{bash}
 $ curl -i http://127.0.0.1:5000/people
 \end{minted}
 
-How does the payload change? What does the \_links section describe? Notice the difference between the payload when people is requested.
+How does the payload change? What does the \_links section describe?
+Notice the difference between the payload when people is requested.
 
 \begin{minted}{bash}
 {
@@ -301,7 +351,8 @@ How does the payload change? What does the \_links section describe? Notice the 
 
 
 \section{Homework}
-Write a RESTful service to determine a useful piece of information off of your computer i.e. disk space, memory, RAM, etc.  
+Write a RESTful service to determine a useful piece of information off
+of your computer i.e. disk space, memory, RAM, etc.
 
 
 
