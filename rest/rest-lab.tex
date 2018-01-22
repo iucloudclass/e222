@@ -93,7 +93,73 @@ $ sudo service mongod stop
 \section{Building REST API}
 
 In this section we'll focus on building up the infrastructure for the
-REST API.
+REST API. In building REST API the schema is one of the main concepts
+that must be well understood before starting coding. 
+
+\subsection{Schema}
+
+Schema is really important in defining an API solidly for data storing
+and retrieving processes. In addition to that schema provide concrete
+definition in validating the data. And also, schema keys are the
+actual field names.  There are set of allowed validation rules for the
+schema in eve.
+
+These are the field data types used in Eve. 
+
+\begin{itemize}
+\item string
+\item boolean
+\item integer
+\item float
+\item number (integer and float values allowed)
+\item datetime
+\item dict
+\item list
+\item media
+\end{itemize}
+
+\clearpage
+In case of using MongoDB data layer to form the REST API, we can use 
+the following data types.
+
+\begin{itemize}
+    
+\item objectid
+\item dbref
+\item point
+\item multipoint
+\item linestring
+\item multilinestring
+\item polygon
+\item multipolygon
+\item geometrycollection
+\item decimal 
+\end{itemize}
+
+There are certain keywords used in most of the times when we are
+defining schema,
+
+\begin{itemize}
+    
+\item required : If True, the field is mandatory on insertion.
+\item readonly : If True, the field is readonly.
+\item minlength, maxlength : Minimum and maximum length allowed for
+  string and list types.
+\item min, max : Minimum and maximum values allowed for integer, float
+  and number types.
+\item allowed : List of allowed values for string and list types.
+\item empty : Only applies to string fields. If False, validation will
+  fail if the value is empty. Defaults to True.
+\item items : Defines a list of values allowed in a list of fixed
+  length, see docs.
+\item schema : Validation schema for dict types and arbitrary length
+  list types. For details and usage examples, see Cerberus
+  documentation.
+\item unique  : The value of the field must be unique within the collection.
+\end{itemize}
+
+These are the basic information needed to know about the schema for
+the first lab.
 
 \subsection{Creating Working Directory}
 
