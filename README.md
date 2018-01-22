@@ -1,5 +1,5 @@
 # e222-labs
-This repository is for lab materials of ENGR-E222 class at IU which takes place in at GY 447 every Thursday 05:45P-06:35P.
+This repository is for lab sessions of ENGR-E222 class at IU which takes place in at GY 447 every Thursday 05:45P-06:35P.
 
 Note: Current schedule can be changed anytime according to the lectures and discussions.
 
