@@ -7,7 +7,7 @@ Note: Current schedule can be changed anytime according to the lectures and disc
 
 Week | Topic | Description | Technologies/Requirements
 --- | --- | --- | ---
-1 | [REST API (Part I)](rest/readme.md) |  First step in building REST service using Python Eve | - pyenv - VirtualBox with Ubuntu 16.04 LTS, MongoDB
+1 | [REST API (Part I)](rest/readme.md) |  First step in building REST service using Python Eve | - pyenv <br>- VirtualBox with Ubuntu 16.04 LTS<br>- MongoDB
 2 | [REST API (Part II)](rest/readme.md) | CRUD with Python Eve | -
 3 | [Swagger](swagger/readme.md) | - | -
 4 | [minikube](minikube/readme.md) | - | -
