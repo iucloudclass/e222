@@ -1,15 +1,17 @@
-# REST API Lab
+# REST
 
-## Introduction to the Lab: Environment
+## Requirements
+
+### Environment
 - Typically we would recommend Ubuntu 17 for this Lab, but presently they have some issues. Before they are not resolved, we recommend Ubuntu 16.04 as the operating system for the labs.
 - To not affect your existing OS on your laptop or workstation, we recommend that you use a virtual machine via VirtualBox
 
-## VirtualBox and pyenv Installation
+### VirtualBox and pyenv Installation
 - follow our video tutorial
   or install on Laptop
 - In addition we like you tu use pyenv so that you do not have to run 2 vms one for python 3.6 and one for python 2.17
 
-## Introduction to the Lab: Database
+### Database
 - We will use MongoDB for our database
 - Once the launch script and configuration file are saved an instance of MongoDB needs to be launched
   - ‘sudo service mongod start’
@@ -18,12 +20,12 @@
   - mongod --port portnumber --dbpath /path_to_your_folder
   - Here we specify a specific port to run the Mongodb service and we provide the path to the database to save the files in the local directories. It is better to provide a path in a separate folder within the workspace for this lab. 
 
-## Install Eve
+## Installation
 - # with PYENV 
   - `pyenv activate ENV3`
   - `pip install eve`
 
-## Introduction to the Lab: Configuration file and launch script
+## Eve Configuration file and launch script
 - Determine your working directory in your workstation
 - Default settings are saved to settings.py
 - Create a configuration file (vi settings.py)
@@ -42,7 +44,7 @@
       app.run()
   ```
   
-## Introduction to the Lab: Launch the API
+## Launch the API
 - Once the MongoDB is up and running and you must have a configuration file and a launch file ready. run.py and settings.py must be in the same directory.
 - Start a launch script:
   - Open a new terminal so you can monitor the API
@@ -52,7 +54,7 @@
     127.0.0.1 - - [17/Jan/2018 10:54:35] "GET / HTTP/1.1" 200 -
     ```
 
-## Introduction to the Lab: Consume the API
+## Consume the API
 - Run the following command in terminal
   `$ curl -i http://127.0.0.1:5000`
 - The response looks good with 200 response code, e.g.:
@@ -86,20 +88,18 @@ We get an additional _items list
     
 - Payload
   ```
-  {
-  	 "_items":[
-   	],
-   	"_links":{
-      		"self":{
-         	"href":"people",
-         	"title":"people"
-      	},
-      		"parent":{
-         	"href":"/",
-         	"title":"home"
-      		}
-   	}
-  }
+    {
+     "_items":[ ],
+     "_links": {
+          "self": {
+              "href":"people",
+              "title":"people"
+          },
+          "parent": {
+              "href":"/",
+              "title":"home"
+          }
+    }
   ```
 
 
