@@ -20,3 +20,11 @@ Week | Topic | Description | Technologies/Requirements
 
 Week | Topic | Description | Technologies/Requirements
 --- | --- | --- | ---
+1 | - | - | -
+2 | - | - | -
+3 | - | - | -
+4 | - | - | -
+5 | - | - | -
+6 | - | - | -
+7 | - | - | -
+8 | - | - | -
