@@ -90,14 +90,14 @@ We get an additional _items list
   ```
     {
      "_items":[ ],
-    "_links":{
-          "self":{
-          "href":"people",
-          "title":"people"
-        },
-          "parent":{
-          "href":"/",
-          "title":"home"
+     "_links": {
+          "self": {
+              "href":"people",
+              "title":"people"
+          },
+          "parent": {
+              "href":"/",
+              "title":"home"
           }
     }
   ```
